@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import CoreLocation
 
 class ViewController: UIViewController {
 

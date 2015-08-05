@@ -13,6 +13,8 @@
 		92E20D8E1B72774D002E495A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92E20D8D1B72774D002E495A /* Images.xcassets */; };
 		92E20D911B72774D002E495A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92E20D8F1B72774D002E495A /* LaunchScreen.xib */; };
 		92E20D9D1B72774D002E495A /* DriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E20D9C1B72774D002E495A /* DriveTests.swift */; };
+		92E20DA71B727B4E002E495A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E20DA61B727B4E002E495A /* CoreMotion.framework */; };
+		92E20DA91B727B59002E495A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E20DA81B727B59002E495A /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		92E20D961B72774D002E495A /* DriveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DriveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E20D9B1B72774D002E495A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E20D9C1B72774D002E495A /* DriveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveTests.swift; sourceTree = "<group>"; };
+		92E20DA61B727B4E002E495A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		92E20DA81B727B59002E495A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E20DA91B727B59002E495A /* CoreLocation.framework in Frameworks */,
+				92E20DA71B727B4E002E495A /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +65,8 @@
 		92E20D781B72774D002E495A = {
 			isa = PBXGroup;
 			children = (
+				92E20DA81B727B59002E495A /* CoreLocation.framework */,
+				92E20DA61B727B4E002E495A /* CoreMotion.framework */,
 				92E20D831B72774D002E495A /* Drive */,
 				92E20D991B72774D002E495A /* DriveTests */,
 				92E20D821B72774D002E495A /* Products */,
@@ -409,6 +417,7 @@
 				92E20DA21B72774D002E495A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92E20DA31B72774D002E495A /* Build configuration list for PBXNativeTarget "DriveTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				92E20DA51B72774D002E495A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
