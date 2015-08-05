@@ -12,6 +12,12 @@ import CoreLocation
 
 class ViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var accelerationLabel: UILabel!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
