@@ -60,7 +60,7 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         let location = locations.last as! CLLocation
-        let speedInMetersPerSecond = location.speed
+        let speedInMetersPerSecond = max(location.speed, 0)
         let speedInMilesPerHour = Int(speedInMetersPerSecond * METERS_PER_SECOND_TO_MILES_PER_HOUR)
         speedLabel.text = String(speedInMilesPerHour)
     }
