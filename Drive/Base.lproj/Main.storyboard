@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,53 +16,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR3-9I-kgs">
-                                <rect key="frame" x="242" y="76" width="117" height="72"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="145" y="20" width="111" height="120"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rst-XD-Wju">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="0.39451695489999999" blue="0.062465635149999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="159" y="364" width="82" height="72"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lte-XU-1AQ">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="0.39451695489999999" blue="0.062465635149999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="264" y="77" width="79" height="48"/>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="㎨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dg8-rA-eIf">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="0.39451695489999999" blue="0.062465635149999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="249" y="364" width="52" height="72"/>
-                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR3-9I-kgs">
+                                <rect key="frame" x="242" y="76" width="117" height="72"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                <color key="textColor" red="1" green="0.39451695489999999" blue="0.062465635149999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Lte-XU-1AQ" firstAttribute="baseline" secondItem="UR3-9I-kgs" secondAttribute="baseline" id="Fb9-Cq-KiK"/>
-                            <constraint firstItem="rst-XD-Wju" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="H46-wp-wC0"/>
-                            <constraint firstItem="UR3-9I-kgs" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="KKE-hf-t0H"/>
-                            <constraint firstItem="Lte-XU-1AQ" firstAttribute="leading" secondItem="UR3-9I-kgs" secondAttribute="trailing" constant="8" symbolic="YES" id="Q8m-CS-Dar"/>
-                            <constraint firstItem="UR3-9I-kgs" firstAttribute="centerX" secondItem="rst-XD-Wju" secondAttribute="centerX" id="fK2-YO-gjA"/>
-                            <constraint firstItem="dg8-rA-eIf" firstAttribute="baseline" secondItem="rst-XD-Wju" secondAttribute="baseline" id="p84-Vo-HJZ"/>
-                            <constraint firstItem="Lte-XU-1AQ" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="tG5-U2-yWw"/>
-                            <constraint firstItem="dg8-rA-eIf" firstAttribute="leading" secondItem="rst-XD-Wju" secondAttribute="trailing" constant="8" symbolic="YES" id="wEZ-e8-NcU"/>
+                            <constraint firstItem="UR3-9I-kgs" firstAttribute="centerX" secondItem="rst-XD-Wju" secondAttribute="centerX" id="47a-AF-dhf">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-6.5"/>
+                            </constraint>
+                            <constraint firstItem="dg8-rA-eIf" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="6KN-5W-WQf"/>
+                            <constraint firstItem="Lte-XU-1AQ" firstAttribute="leading" secondItem="UR3-9I-kgs" secondAttribute="trailing" constant="8" symbolic="YES" id="9gE-iI-ktp">
+                                <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                            </constraint>
+                            <constraint firstItem="UR3-9I-kgs" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="QVz-78-T5Q"/>
+                            <constraint firstItem="UR3-9I-kgs" firstAttribute="baseline" secondItem="Lte-XU-1AQ" secondAttribute="baseline" id="YKT-et-2fC"/>
+                            <constraint firstItem="UR3-9I-kgs" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="g6x-TV-Y3w">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-39.5"/>
+                            </constraint>
+                            <constraint firstItem="rst-XD-Wju" firstAttribute="baseline" secondItem="dg8-rA-eIf" secondAttribute="baseline" id="lEU-W2-1ra"/>
+                            <constraint firstItem="dg8-rA-eIf" firstAttribute="leading" secondItem="rst-XD-Wju" secondAttribute="trailing" constant="8" symbolic="YES" id="rXo-vQ-gkA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -72,14 +65,14 @@
                                 <exclude reference="dg8-rA-eIf"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="KKE-hf-t0H"/>
-                                <exclude reference="fK2-YO-gjA"/>
-                                <exclude reference="Fb9-Cq-KiK"/>
-                                <exclude reference="Q8m-CS-Dar"/>
-                                <exclude reference="tG5-U2-yWw"/>
-                                <exclude reference="H46-wp-wC0"/>
-                                <exclude reference="p84-Vo-HJZ"/>
-                                <exclude reference="wEZ-e8-NcU"/>
+                                <exclude reference="47a-AF-dhf"/>
+                                <exclude reference="QVz-78-T5Q"/>
+                                <exclude reference="YKT-et-2fC"/>
+                                <exclude reference="g6x-TV-Y3w"/>
+                                <exclude reference="9gE-iI-ktp"/>
+                                <exclude reference="lEU-W2-1ra"/>
+                                <exclude reference="6KN-5W-WQf"/>
+                                <exclude reference="rXo-vQ-gkA"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -89,14 +82,14 @@
                                 <include reference="dg8-rA-eIf"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="KKE-hf-t0H"/>
-                                <include reference="fK2-YO-gjA"/>
-                                <include reference="Fb9-Cq-KiK"/>
-                                <include reference="Q8m-CS-Dar"/>
-                                <include reference="tG5-U2-yWw"/>
-                                <include reference="H46-wp-wC0"/>
-                                <include reference="p84-Vo-HJZ"/>
-                                <include reference="wEZ-e8-NcU"/>
+                                <include reference="47a-AF-dhf"/>
+                                <include reference="QVz-78-T5Q"/>
+                                <include reference="YKT-et-2fC"/>
+                                <include reference="g6x-TV-Y3w"/>
+                                <include reference="9gE-iI-ktp"/>
+                                <include reference="lEU-W2-1ra"/>
+                                <include reference="6KN-5W-WQf"/>
+                                <include reference="rXo-vQ-gkA"/>
                             </mask>
                         </variation>
                     </view>
