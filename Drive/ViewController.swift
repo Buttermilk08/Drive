@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Location Stuff
+        // **** Location Stuff ****
         // TODO: check the kCLAuthorizationStatus
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -32,26 +32,26 @@ class ViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        // Motion Stuff
+        // **** Motion Stuff ****
 //        let motionManager = AppDelegate.Motion.Manager
 //        motionManager.accelerometerUpdateInterval = 0.2
 //        
 //        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{(accelerometerData, error) -> Void in
 //            self.outputAccelerationData(accelerometerData.acceleration)})
         
-        
-        let motionManager = AppDelegate.Motion.Manager
-        motionManager.deviceMotionUpdateInterval = 0.5
+        let motionManager = CMMotionManager()
+        motionManager.deviceMotionUpdateInterval = 0.1
         
         if motionManager.deviceMotionAvailable {
-            if motionManager.deviceMotionActive == false {
             motionManager.startDeviceMotionUpdates()
-                self.outputAccelerationData(motionManager.deviceMotion)
-                
-            } else {
-                motionManager.stopDeviceMotionUpdates()
-            }
+            //motionManager.startDeviceMotionUpdatesToQueue(<#queue: NSOperationQueue!#>, withHandler: <#CMDeviceMotionHandler!##(CMDeviceMotion!, NSError!) -> Void#>)
+            //var data = motionManager.deviceMotion?.description
+            //println(data)
             
+            var data = motionManager.deviceMotion?.userAcceleration
+            println(data?.x)
+            println(data?.y)
+            println(data?.z)
         }
 
     }
