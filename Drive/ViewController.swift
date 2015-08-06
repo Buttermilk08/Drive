@@ -11,6 +11,7 @@ import CoreMotion
 import CoreLocation
 
 let METERS_PER_SECOND_TO_MILES_PER_HOUR = 2.236
+let ACCELERATION_DUE_TO_GRAVITY = 9.806
 
 class ViewController: UIViewController {
     
@@ -32,13 +33,25 @@ class ViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         // Motion Stuff
-        let motionManager = AppDelegate.Motion.Manager
-        motionManager.accelerometerUpdateInterval = 0.2
-        motionManager.gyroUpdateInterval = 0.2
+//        let motionManager = AppDelegate.Motion.Manager
+//        motionManager.accelerometerUpdateInterval = 0.2
+//        
+//        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{(accelerometerData, error) -> Void in
+//            self.outputAccelerationData(accelerometerData.acceleration)})
         
-        if motionManager.accelerometerAvailable {
-            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData, error) -> Void in
-                self.outputAccelerationData(accelerometerData.acceleration)})
+        
+        let motionManager = AppDelegate.Motion.Manager
+        motionManager.deviceMotionUpdateInterval = 0.5
+        
+        if motionManager.deviceMotionAvailable {
+            if motionManager.deviceMotionActive == false {
+            motionManager.startDeviceMotionUpdates()
+                self.outputAccelerationData(motionManager.deviceMotion)
+                
+            } else {
+                motionManager.stopDeviceMotionUpdates()
+            }
+            
         }
 
     }
@@ -48,13 +61,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func outputAccelerationData(acceleration:CMAcceleration){
-        var totalAcceleration = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
-        
-        self.accelerationLabel.text = String(format: "%.2f", totalAcceleration)
+    func outputAccelerationData(acceleration:CMDeviceMotion){
+        println(acceleration.description)
+        println(acceleration.userAcceleration)
+        //self.accelerationLabel.text = String(format: "%.2f", acceleration.)
         
     }
 }
+//    func outputAccelerationData(acceleration:CMDeviceMotion){
+//        var totalAcceleration = (sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
+//        
+//        self.accelerationLabel.text = String(format: "%.2f", totalAcceleration)
+//        
+//    }
+//}
 
 extension ViewController: CLLocationManagerDelegate {
     
