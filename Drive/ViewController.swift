@@ -33,25 +33,31 @@ class ViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         // **** Motion Stuff ****
-//        let motionManager = AppDelegate.Motion.Manager
-//        motionManager.accelerometerUpdateInterval = 0.2
-//        
-//        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{(accelerometerData, error) -> Void in
-//            self.outputAccelerationData(accelerometerData.acceleration)})
-        
+//        let motionManager = CMMotionActivityManager()
+        // What is the difference between CMMotionManager and CMMotionActivityManager????
         let motionManager = CMMotionManager()
-        motionManager.deviceMotionUpdateInterval = 0.1
-        
         if motionManager.deviceMotionAvailable {
-            motionManager.startDeviceMotionUpdates()
-            //motionManager.startDeviceMotionUpdatesToQueue(<#queue: NSOperationQueue!#>, withHandler: <#CMDeviceMotionHandler!##(CMDeviceMotion!, NSError!) -> Void#>)
-            //var data = motionManager.deviceMotion?.description
-            //println(data)
+            motionManager.deviceMotionUpdateInterval = 0.02
             
-            var data = motionManager.deviceMotion?.userAcceleration
-            println(data?.x)
-            println(data?.y)
-            println(data?.z)
+            let queue = NSOperationQueue()
+            motionManager.startDeviceMotionUpdatesToQueue(queue) {
+                [weak self] (data: CMDeviceMotion!, error: NSError!) in
+                
+                var x = data.userAcceleration.x
+                var y = data.userAcceleration.y
+                var z = data.userAcceleration.z
+                println(x)
+                println(y)
+                println(z)
+                // motion processing here
+                var totalAcceleration = (sqrt(x * x + y * y + z * z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
+                
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    // update UI here
+                    self!.accelerationLabel.text = String(stringInterpolationSegment: totalAcceleration)
+                }
+
+            }
         }
 
     }
@@ -60,21 +66,14 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func outputAccelerationData(acceleration:CMDeviceMotion){
-        println(acceleration.description)
-        println(acceleration.userAcceleration)
-        //self.accelerationLabel.text = String(format: "%.2f", acceleration.)
-        
-    }
-}
+    
 //    func outputAccelerationData(acceleration:CMDeviceMotion){
-//        var totalAcceleration = (sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
-//        
+//        var totalAcceleration = (sqrt(userAcceleration.x * userAcceleration.x + userAcceleration.y * userAcceleration.y + userAcceleration.z * userAcceleration.z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
+//    
 //        self.accelerationLabel.text = String(format: "%.2f", totalAcceleration)
 //        
 //    }
-//}
+}
 
 extension ViewController: CLLocationManagerDelegate {
     
