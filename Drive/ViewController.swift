@@ -12,6 +12,7 @@ import CoreLocation
 
 let METERS_PER_SECOND_TO_MILES_PER_HOUR = 2.236
 let ACCELERATION_DUE_TO_GRAVITY = 9.806
+var maxAcceleration = 0.00
 
 class ViewController: UIViewController {
     
@@ -35,44 +36,68 @@ class ViewController: UIViewController {
         // **** Motion Stuff ****
 //        let motionManager = CMMotionActivityManager()
         // What is the difference between CMMotionManager and CMMotionActivityManager????
-        let motionManager = CMMotionManager()
-        if motionManager.deviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 0.02
-            
-            let queue = NSOperationQueue()
-            motionManager.startDeviceMotionUpdatesToQueue(queue) {
-                [weak self] (data: CMDeviceMotion!, error: NSError!) in
-                
-                var x = data.userAcceleration.x
-                var y = data.userAcceleration.y
-                var z = data.userAcceleration.z
-                println(x)
-                println(y)
-                println(z)
-                // motion processing here
-                var totalAcceleration = (sqrt(x * x + y * y + z * z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
-                
-                NSOperationQueue.mainQueue().addOperationWithBlock {
-                    // update UI here
-                    self!.accelerationLabel.text = String(stringInterpolationSegment: totalAcceleration)
-                }
-
-            }
-        }
-
+//        let motionManager = CMMotionManager()
+//        if motionManager.deviceMotionAvailable {
+//            motionManager.deviceMotionUpdateInterval = 0.2
+//            
+//            let queue = NSOperationQueue()
+//            motionManager.startDeviceMotionUpdatesUsingReferenceFrame(CMAttitudeReferenceFrame.XArbitraryCorrectedZVertical, toQueue: queue, withHandler: {(accelerometerData, error) -> Void in
+////            motionManager.startDeviceMotionUpdatesToQueue(queue) {
+////                [weak self] (data: CMDeviceMotion!, error: NSError!) in
+//            
+//                var x = accelerometerData.userAcceleration.x
+//                var y = accelerometerData.userAcceleration.y
+//                var z = accelerometerData.userAcceleration.z
+//                println(x)
+//                println(y)
+//                println(z)
+//                // motion processing here
+//                var totalAcceleration = (sqrt(x * x + y * y + z * z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
+//                
+//                NSOperationQueue.mainQueue().addOperationWithBlock {
+//                    // update UI here
+//                    //self.accelerationLabel.text = String(stringInterpolationSegment: totalAcceleration)
+//                    println(totalAcceleration)
+//
+//                }
+//            })
+//        }
+        
+        
     }
+    
+     override func viewDidAppear(animated: Bool) {
+            
+        let motionManager = AppDelegate.Motion.Manager
+        motionManager.accelerometerUpdateInterval = 0.2
+            
+        if motionManager.accelerometerAvailable {
+            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData, error) -> Void in
+                self.outputAccelerationData(accelerometerData.acceleration)})
+        }
+            
+     }
+        
+     override func viewDidDisappear(animated: Bool) {
+        AppDelegate.Motion.Manager.stopDeviceMotionUpdates()
+     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-//    func outputAccelerationData(acceleration:CMDeviceMotion){
-//        var totalAcceleration = (sqrt(userAcceleration.x * userAcceleration.x + userAcceleration.y * userAcceleration.y + userAcceleration.z * userAcceleration.z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
-//    
-//        self.accelerationLabel.text = String(format: "%.2f", totalAcceleration)
-//        
-//    }
+    func outputAccelerationData(acceleration:CMAcceleration){
+        var newAcceleration = (sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z) - 1.0) * ACCELERATION_DUE_TO_GRAVITY
+        
+        if maxAcceleration < newAcceleration {
+            maxAcceleration = newAcceleration
+        }
+    
+        self.accelerationLabel.text = String(format: "%.2f", maxAcceleration)
+        
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate {
